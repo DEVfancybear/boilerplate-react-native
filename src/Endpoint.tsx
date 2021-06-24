@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   Platform,
@@ -9,12 +9,13 @@ import {
   View,
 } from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
-import VectorImage from 'react-native-vector-image';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import { svgs } from './assets';
+import {RecoilRoot} from 'recoil';
 import {useNetWorkStatus} from './hooks/';
 import './i18n/';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {AppContainer} from './routes/AppNavigation';
+
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
   KeyboardManager.setEnableDebugging(false);
@@ -42,37 +43,14 @@ const Endpoint = () => {
   const [status, canAccess] = useNetWorkStatus();
   console.log('Net work status', status);
   return (
-    <ScrollView>
-      <View
-        style={{
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        }}>
-        <View style={styles.sectionContainer}>
-          <Text>{t('example.helloUser')} </Text>
-        </View>
-        <VectorImage source={svgs.horizontalDots} />
-      </View>
-    </ScrollView>
+    <RecoilRoot>
+      <SafeAreaProvider>
+        <Suspense fallback={null}>
+          <AppContainer />
+        </Suspense>
+      </SafeAreaProvider>
+    </RecoilRoot>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default Endpoint;
