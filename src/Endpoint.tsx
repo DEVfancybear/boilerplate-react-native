@@ -9,8 +9,10 @@ import {
   View,
 } from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
+import VectorImage from 'react-native-vector-image';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { svgs } from './assets';
 import {useNetWorkStatus} from './hooks/';
 import './i18n/';
 if (Platform.OS === 'ios') {
@@ -48,6 +50,7 @@ const Endpoint = () => {
         <View style={styles.sectionContainer}>
           <Text>{t('example.helloUser')} </Text>
         </View>
+        <VectorImage source={svgs.horizontalDots} />
       </View>
     </ScrollView>
   );

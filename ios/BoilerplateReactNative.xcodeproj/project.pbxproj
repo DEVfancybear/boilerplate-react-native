@@ -145,7 +145,6 @@
 				EBBB05E86D0C5AA22AE4AD13 /* Pods-BoilerplateReactNative-BoilerplateReactNativeTests.debug.xcconfig */,
 				D9DA57633B8AA7CAE8697A69 /* Pods-BoilerplateReactNative-BoilerplateReactNativeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -263,7 +262,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/react-native-vector-image/strip_svgs.sh\n";
 		};
 		1151BB4A17C9D1439B928CAC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
