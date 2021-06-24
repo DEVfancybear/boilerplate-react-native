@@ -1,3 +1,5 @@
+import {Theme} from '@react-navigation/native';
+
 export interface IFontSize {
   FONT_4: number;
 
@@ -100,3 +102,4 @@ export interface IFontFamily {
   primary?: string;
   secondary?: string;
 }
+export type IAppTheme = Theme & {colors: Partial<IColors>};
