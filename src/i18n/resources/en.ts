@@ -9,4 +9,7 @@ export default {
       userId: 'Enter a user id',
     },
   },
+  dialog: {
+    cancel: 'Cancel'
+  }
 };

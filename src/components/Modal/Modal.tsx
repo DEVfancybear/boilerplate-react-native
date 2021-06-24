@@ -21,7 +21,7 @@ import {IModalProps, IOptionData} from './Modal.props';
 
 const ModalComponent = forwardRef((props: IModalProps, ref) => {
   // state
-  const [t] = useTranslation();
+  const {t} = useTranslation();
   const {
     onPressCancel,
     textCancelStyle,
@@ -32,7 +32,7 @@ const ModalComponent = forwardRef((props: IModalProps, ref) => {
     title,
     onPressOption,
     onBackDropPress,
-    textCancel = t('dialog:cancel'),
+    textCancel = t('dialog.cancel'),
     backDropColor = 'rgba(0,0,0,.5)',
     closeOnBackDrop = true,
     option = [],
