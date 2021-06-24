@@ -85,6 +85,10 @@ export interface IColors {
   error: string;
 
   info: string;
+
+  blue: string;
+
+  grey: string;
 }
 
 export interface ISpacing {

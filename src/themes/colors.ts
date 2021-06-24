@@ -8,6 +8,8 @@ export const ColorDefault: IColors = {
   notification: 'rgb(255, 59, 48)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
+  blue: '#3A36D5',
+  grey: '#CFD2D7',
 };
 export const ColorDark: IColors = {
   primary: 'rgb(10, 132, 255)',
@@ -18,4 +20,6 @@ export const ColorDark: IColors = {
   notification: 'rgb(255, 69, 58)',
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
+  blue: '#3A36D5',
+  grey: '#CFD2D7',
 };

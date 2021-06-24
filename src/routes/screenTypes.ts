@@ -6,12 +6,14 @@ export enum APP_SCREEN {
 
   AUTHORIZE = 'AUTHORIZE',
   HOME = 'HOME',
+  BOTTOM_MENU = 'BOTTOM_MENU',
 }
 
 export type UnAuthorizeParamsList = {
   [APP_SCREEN.LOGIN]: undefined;
   [APP_SCREEN.REGISTER]: undefined;
   [APP_SCREEN.SPLASH]: undefined;
+  [APP_SCREEN.BOTTOM_MENU]: undefined;
 };
 export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
