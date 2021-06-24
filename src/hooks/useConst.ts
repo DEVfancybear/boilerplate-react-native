@@ -1,0 +1,13 @@
+import {useRef} from 'react';
+
+type Init<T> = () => T;
+function useConst<T>(init: Init<T>) {
+  const ref = useRef<T | null>(null);
+
+  if (ref.current === null) {
+    ref.current = init();
+  }
+
+  return ref.current;
+}
+export default useConst;
