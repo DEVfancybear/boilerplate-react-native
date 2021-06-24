@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {
@@ -21,6 +11,7 @@ import {
 import KeyboardManager from 'react-native-keyboard-manager';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useNetWorkStatus} from './hooks/';
 import './i18n/';
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
@@ -46,7 +37,8 @@ if (Platform.OS === 'ios') {
 const Endpoint = () => {
   const {t} = useTranslation();
   const isDarkMode = useColorScheme() === 'dark';
-
+  const [status, canAccess] = useNetWorkStatus();
+  console.log('Net work status', status);
   return (
     <ScrollView>
       <View
