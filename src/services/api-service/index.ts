@@ -1,11 +1,12 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import queryString from 'query-string';
+import config from '../../config';
 
 export default class APIRequestClient {
   protected _axios: AxiosInstance;
   constructor() {
     this._axios = axios.create({
-      baseURL: 'localhost://',
+      baseURL: config.BASE_URL,
       headers: {
         'content-type': 'application/json',
       },

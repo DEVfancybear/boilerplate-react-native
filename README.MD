@@ -11,7 +11,8 @@
 - Axios
 - Lodash
 - React-hook-form
-
+- React-native-vector-image
+- React-native-config
 ### 🐶 Project Structure
 
 ````
@@ -22,7 +23,7 @@ src/                 #project root
 |   |── components/  #common components reuse
 │   ├── configs/     #configs project
 │   ├── helpers/     #share an function logic for our app
-│   ├── views/       #containers source
+│   ├── views/       #screens source
 │   ├── hooks/       #hooks source
 |   |── i18n/        #multi languages
 │   ├── models/      #define interface

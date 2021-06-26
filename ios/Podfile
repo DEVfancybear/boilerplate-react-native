@@ -14,6 +14,8 @@ target 'BoilerplateReactNative' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   target 'BoilerplateReactNativeTests' do
     inherit! :complete
     # Pods for testing
