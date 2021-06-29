@@ -5,6 +5,4 @@ class Validate {
   };
 }
 
-const validate = new Validate();
-
-export default validate;
+export default new Validate();

@@ -20,6 +20,4 @@ class TimeConvert {
   };
 }
 
-const timeConvert = new TimeConvert();
-
-export default timeConvert;
+export default new TimeConvert();

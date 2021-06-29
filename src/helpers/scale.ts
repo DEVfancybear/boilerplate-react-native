@@ -6,15 +6,10 @@ const [shortDimension, longDimension] =
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 
-class Scale {
-  scale = (size: number) => (shortDimension / guidelineBaseWidth) * size;
+const scale = (size: number) => (shortDimension / guidelineBaseWidth) * size;
+const verticalScale = (size: number) =>
+  (longDimension / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+  size + (scale(size) - size) * factor;
 
-  verticalScale = (size: number) =>
-    (longDimension / guidelineBaseHeight) * size;
-  moderateScale = (size: number, factor = 0.5) =>
-    size + (this.scale(size) - size) * factor;
-}
-
-const scale = new Scale();
-
-export default scale;
+export {scale, verticalScale, moderateScale};
