@@ -16,7 +16,4 @@ export default class APIRequestClient {
   setToken(token: string) {
     this._axios.defaults.headers.common.Authorization = token ? `${token}` : '';
   }
-  get(url: string, config?: AxiosRequestConfig) {
-    return this._axios.get(url, config);
-  }
 }
