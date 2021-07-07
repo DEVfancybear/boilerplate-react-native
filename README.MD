@@ -10,9 +10,9 @@
 - Recoil
 - Axios
 - Lodash
-- React-hook-form
-- React-native-vector-image
-- React-native-config
+- React hook form
+- React native vector image
+- React native config
 ### 🐶 Project Structure
 
 ````
@@ -22,9 +22,8 @@ src/                 #project root
 |   |── assets/      #assets file
 |   |── components/  #common components reuse
 │   ├── configs/     #configs project
-│   ├── helpers/     #share an function logic for our app
+│   ├── common/     #share an function logic for our app
 │   ├── views/       #screens source
-│   ├── hooks/       #hooks source
 |   |── i18n/        #multi languages
 │   ├── models/      #define interface
 |   |── routes/      #common routes

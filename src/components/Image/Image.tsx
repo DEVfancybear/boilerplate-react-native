@@ -3,7 +3,7 @@ import {Image, StyleProp, ImageStyle} from 'react-native';
 import equals from 'react-fast-compare';
 import {Block} from '../Block/Block';
 import {IImageProps} from './Image.props';
-import {enhance} from '../../helpers/handle';
+import {enhance} from '../../common/';
 
 const ImgComponent = (props: IImageProps) => {
   // state

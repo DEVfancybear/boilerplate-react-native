@@ -9,7 +9,7 @@ import React, {
 import equals from 'react-fast-compare';
 import {useTranslation} from 'react-i18next';
 import Modal from 'react-native-modal';
-import {enhance} from '../../helpers/handle';
+import {enhance} from '../../common/';
 
 import {Block} from '../Block/Block';
 import {Button} from '../Button/Button';

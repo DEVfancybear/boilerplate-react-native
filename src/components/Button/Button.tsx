@@ -6,7 +6,7 @@ import {Text} from '../Text/Text';
 
 import {stylesView, stylesText} from './Button.presets';
 import {IButtonProps} from './Button.props';
-import {enhance} from '../../helpers/handle';
+import {enhance} from '../../common/';
 
 const ButtonComponent = (props: IButtonProps) => {
   // state

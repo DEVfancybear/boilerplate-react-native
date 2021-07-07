@@ -11,7 +11,7 @@ import {
 import KeyboardManager from 'react-native-keyboard-manager';
 
 import {RecoilRoot} from 'recoil';
-import {useNetWorkStatus} from './hooks/';
+import {useNetWorkStatus} from './common/hooks';
 import './i18n/';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AppContainer} from './routes/AppNavigation';

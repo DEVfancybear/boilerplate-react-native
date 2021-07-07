@@ -11,7 +11,7 @@ import {
 import {IAppTheme} from '../../models/IThemes';
 import {FontSizeDefault} from '../../themes/fontSize';
 import {FontDefault} from '../../themes/typography';
-import {enhance} from '../../helpers/handle';
+import {enhance} from '../../common/';
 
 import {ITextProps} from './Text.props';
 

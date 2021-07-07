@@ -1,4 +1,4 @@
-import {moderateScale} from '../helpers/';
+import {moderateScale} from '../common';
 import {IFontSize} from '../models/IThemes';
 export const FontSizeDefault: IFontSize = {
   FONT_4: moderateScale(4),
