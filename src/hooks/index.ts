@@ -6,6 +6,8 @@ import useSetStateArray from './useSetStateArray';
 import useBoolean from './useBoolean';
 import useSetState from './useSetState';
 import useConst from './useConst';
+import useForceUpdate from './useForceUpdate';
+
 export {
   useNetWorkStatus,
   useDebounce,
@@ -15,4 +17,5 @@ export {
   useBoolean,
   useSetState,
   useConst,
+  useForceUpdate
 };
