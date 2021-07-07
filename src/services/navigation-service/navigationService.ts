@@ -1,17 +1,51 @@
-import {createRef} from 'react';
-import {CommonActions, NavigationContainerRef} from '@react-navigation/native';
+import * as React from 'react';
+import {
+  NavigationAction,
+  NavigationContainerRef,
+  StackActions,
+} from '@react-navigation/native';
 
-import {RootStackParamList} from '../../routes/screenTypes';
-export const navigationRef = createRef<NavigationContainerRef>();
+export const navigationRef: React.RefObject<NavigationContainerRef> =
+  React.createRef();
 
-export function navigate<RouteName extends keyof RootStackParamList>(
-  ...arg: undefined extends RootStackParamList[RouteName]
-    ? [RouteName] | [RouteName, RootStackParamList[RouteName]]
-    : [RouteName, RootStackParamList[RouteName]]
-) {
-  navigationRef.current?.navigate(arg[0], arg.length > 1 ? arg[1] : undefined);
+type paramType<T> = T | object | any;
+
+function navigate<T>(name: string, params?: paramType<T>): void {
+  navigationRef.current?.navigate(name, params);
 }
 
-export function goBack() {
-  navigationRef.current?.dispatch(CommonActions.goBack);
+function dispatch(action: NavigationAction): void {
+  navigationRef.current?.dispatch(action);
 }
+
+function replace<T>(name: string, params?: paramType<T>): void {
+  navigationRef.current?.dispatch(StackActions.replace(name, params));
+}
+
+function push<T>(name: string, params?: paramType<T>): void {
+  navigationRef.current?.dispatch(StackActions.push(name, params));
+}
+
+function pop(count: number): void {
+  navigationRef.current?.dispatch(StackActions.pop(count));
+}
+
+function goBack(): void {
+  navigationRef.current?.goBack();
+}
+
+function reset(routes?: any): void {
+  navigationRef.current?.reset({
+    routes: [{name: routes}],
+  });
+}
+
+export const NavigationService = {
+  navigate,
+  dispatch,
+  replace,
+  push,
+  goBack,
+  reset,
+  pop,
+};
