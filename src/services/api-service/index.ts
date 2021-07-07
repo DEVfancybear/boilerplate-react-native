@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import config from '../../config';
 
 export default class APIRequestClient {
-  protected _axios: AxiosInstance;
+  _axios: AxiosInstance;
   constructor() {
     this._axios = axios.create({
       baseURL: config.BASE_URL,
