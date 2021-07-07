@@ -5,7 +5,7 @@ import equals from 'react-fast-compare';
 import {useTheme} from '@react-navigation/native';
 
 import {IBlockProps} from './Block.props';
-import {enhance} from '../../common/';
+import {enhance} from '../../helpers';
 import {IAppTheme} from '../../models/IThemes';
 
 const styles = StyleSheet.create({
