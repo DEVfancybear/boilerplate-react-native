@@ -22,7 +22,7 @@ src/                 #project root
 |   |── assets/      #assets file
 |   |── components/  #common components reuse
 │   ├── configs/     #configs project
-│   ├── helpers/      #share an function logic for our app
+│   ├── helpers/     #share an function logic for our app
 │   ├── views/       #screens source
 |   |── i18n/        #multi languages
 │   ├── models/      #define interface
