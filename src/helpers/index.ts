@@ -3,3 +3,4 @@ export * from './hooks';
 export * from './scale';
 export * from './time';
 export * from './validate';
+export * from './date';
