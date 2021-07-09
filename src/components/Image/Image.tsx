@@ -35,7 +35,7 @@ const ImgComponent = (props: IImageProps) => {
         // @ts-ignore
         style={style}
         resizeMode={resizeMode}
-        source={{uri: source}}
+        source={typeof source === 'string' ? {uri: source} : source}
         onLoadEnd={() => setIsLoading(false)}
       />
       {isLoading && (

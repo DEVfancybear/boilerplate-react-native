@@ -22,14 +22,6 @@ export const BottomMenu = () => {
         <Tab.Screen name="setting" component={SettingScreen} />
         <Tab.Screen name="user" component={ProfileScreen} />
       </Tab.Navigator>
-      {useSafeAreaInsets().bottom > 0 && (
-        <View
-          style={{
-            height: useSafeAreaInsets().bottom - 5,
-            backgroundColor: 'white',
-          }}
-        />
-      )}
     </View>
   );
 };
