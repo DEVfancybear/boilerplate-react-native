@@ -12,4 +12,7 @@ const verticalScale = (size: number) =>
 const moderateScale = (size: number, factor = 0.5) =>
   size + (scale(size) - size) * factor;
 
-export {scale, verticalScale, moderateScale};
+const moderateVerticalScale = (size: number, factor = 0.5) =>
+  size + (verticalScale(size) - size) * factor;
+
+export {scale, verticalScale, moderateScale, moderateVerticalScale};
