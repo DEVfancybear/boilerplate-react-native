@@ -1,20 +1,11 @@
 import React, {Suspense} from 'react';
-import {useTranslation} from 'react-i18next';
-import {
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Platform} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
-
 import {RecoilRoot} from 'recoil';
-import {useNetWorkStatus} from './helpers/hooks';
 import './i18n/';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AppContainer} from './routes/AppNavigation';
+import ErrorBoundary from 'react-native-error-boundary';
 
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
@@ -38,15 +29,13 @@ if (Platform.OS === 'ios') {
   //   });
 }
 const Endpoint = () => {
-  const {t} = useTranslation();
-  const isDarkMode = useColorScheme() === 'dark';
-  const [status, canAccess] = useNetWorkStatus();
-  console.log('Net work status', status);
   return (
     <RecoilRoot>
       <SafeAreaProvider>
         <Suspense fallback={null}>
-          <AppContainer />
+          <ErrorBoundary>
+            <AppContainer />
+          </ErrorBoundary>
         </Suspense>
       </SafeAreaProvider>
     </RecoilRoot>
