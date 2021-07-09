@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Header} from '../../components';
 import config from '../../config';
+import {optimizeHeavyScreen} from 'react-navigation-heavy-screen';
 
 const HomeScreen = () => {
   return (
@@ -22,4 +23,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default HomeScreen;
+export default optimizeHeavyScreen(HomeScreen);
