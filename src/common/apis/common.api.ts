@@ -1,4 +1,4 @@
-import unAuthorizedRequest from '../services/api-service/unAuthorizedRequest';
+import unAuthorizedRequest from '../../services/api-service/unAuthorizedRequest';
 
 class CommonApi {
   fetchData = (url: string) => {

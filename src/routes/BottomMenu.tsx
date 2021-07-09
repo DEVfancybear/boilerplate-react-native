@@ -3,10 +3,9 @@ import {
   createBottomTabNavigator,
   BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
-import {TabBar} from '../components';
+import {TabBar} from '../common/components';
 import GroupScreen from '../views/GroupScreen';
 import ProfileScreen from '../views/ProfileScreen';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {View} from 'react-native';
 import HomeScreen from '../views/HomeScreen';
 import SettingScreen from '../views/SettingScreen';

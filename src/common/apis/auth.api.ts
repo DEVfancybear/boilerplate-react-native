@@ -1,4 +1,4 @@
-import authorizedRequest from '../services/api-service/authorizedRequest';
+import authorizedRequest from '../../services/api-service/authorizedRequest';
 
 class AuthApi {
   setToken = (token: string) => {

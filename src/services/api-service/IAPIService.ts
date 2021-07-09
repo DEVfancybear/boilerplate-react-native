@@ -1,4 +1,4 @@
-import {IErrorCode} from '../../models';
+import {IErrorCode} from '../../common/models';
 
 export interface APIResponse extends Error {
   status: number;

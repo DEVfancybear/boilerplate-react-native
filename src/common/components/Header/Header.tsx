@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {NavigationService} from '../../services/navigation-service/navigationService';
+import {NavigationService} from '../../../services/navigation-service/navigationService';
 import {ColorDefault} from '../../themes/colors';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {IIconTypes} from './Header.props';

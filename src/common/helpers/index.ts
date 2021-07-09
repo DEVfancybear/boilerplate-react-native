@@ -1,4 +1,4 @@
-export * from './handle/handle';
+export * from './handle/';
 export * from './hooks';
 export * from './scale';
 export * from './time';

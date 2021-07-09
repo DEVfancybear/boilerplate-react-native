@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from '../../components';
+import {Text} from '../../common/components';
 
 const RegisterScreen = () => {
   return <Text>Register screen</Text>;

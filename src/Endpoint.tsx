@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {Platform} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
 import {RecoilRoot} from 'recoil';
-import './i18n/';
+import './common/i18n';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AppContainer} from './routes/AppNavigation';
 import ErrorBoundary from 'react-native-error-boundary';
