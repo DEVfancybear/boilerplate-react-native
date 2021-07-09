@@ -10,6 +10,7 @@ export const ColorDefault: IColors = {
   info: '#ffd700',
   blue: '#3A36D5',
   grey: '#CFD2D7',
+  navigationBar: '#ffffff',
 };
 export const ColorDark: IColors = {
   primary: 'rgb(10, 132, 255)',
@@ -22,4 +23,5 @@ export const ColorDark: IColors = {
   info: '#ffd700',
   blue: '#3A36D5',
   grey: '#CFD2D7',
+  navigationBar: '#ffffff',
 };

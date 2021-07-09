@@ -6,3 +6,4 @@ export * from './Button/Button';
 export * from './Divider/Divider';
 export * from './Modal/Modal';
 export * from './BottomMenu/TabBar';
+export * from './Header/Header';

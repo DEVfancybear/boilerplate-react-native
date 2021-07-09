@@ -89,6 +89,8 @@ export interface IColors {
   blue: string;
 
   grey: string;
+
+  navigationBar: string;
 }
 
 export interface ISpacing {

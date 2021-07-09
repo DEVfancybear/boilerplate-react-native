@@ -1,12 +1,17 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {Header} from '../../components';
 import config from '../../config';
 
 const HomeScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text>{config.BASE_URL}</Text>
-    </View>
+    <SafeAreaView style={{flex: 1}}>
+      <Header title="Header" backEnabled={true} />
+      <View style={styles.container}>
+        <Text>{config.BASE_URL}</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
@@ -17,5 +22,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 export default HomeScreen;
