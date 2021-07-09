@@ -11,7 +11,7 @@ export const SERVICE_REQUEST_TIMEOUT = 80000;
 /**
  * API Service that called from axios with no protection ssl pining
  */
-export class AxiosAPIService implements IAPIService {
+class AxiosAPIService implements IAPIService {
   baseURL: string = config.BASE_URL;
 
   type: APIServiceType = 'axios';
