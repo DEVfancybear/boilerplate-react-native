@@ -85,15 +85,18 @@ export class AxiosAPIService implements IAPIService {
    * Return a object value which describes the HTTP request headers.
    */
   get defaultHeaders() {
-    // FIXME: Need to update user token if needed
-    // const userToken = store.getState().auth.user
-    // if (userToken) {
-    //   return {
-    //     Authorization: userToken,
-    //   }
-    // }
-
     return {};
+  }
+
+  /**
+   * Set token to headers Authorization
+   * @param token token user after login success
+   */
+
+  setToken(token: string) {
+    this.axios.defaults.headers.common.Authorization = token
+      ? `Bearer ${token}`
+      : '';
   }
 
   /**
@@ -178,4 +181,5 @@ export class AxiosAPIService implements IAPIService {
 }
 
 // Uncomment this line if you use Axios.
-export const apiService = new AxiosAPIService(config.BASE_URL);
+
+export default AxiosAPIService;

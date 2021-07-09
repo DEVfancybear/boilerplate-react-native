@@ -1,2 +1,4 @@
 import CommonApi from './common.api';
-export {CommonApi};
+import AuthApi from './auth.api';
+
+export {CommonApi, AuthApi};

@@ -1,8 +1,8 @@
-import {apiService} from '../services/api-service';
+import unAuthorizedRequest from '../services/api-service/unAuthorizedRequest';
 
 class CommonApi {
   fetchData = (url: string) => {
-    return apiService.get(url);
+    return unAuthorizedRequest.get(url);
   };
 }
 

@@ -35,4 +35,6 @@ export interface IAPIService {
    * Handle unauthorized case.
    */
   handleUnauthorized(): Promise<void>;
+
+  setToken(token: string | undefined): void;
 }
