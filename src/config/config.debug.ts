@@ -1,4 +1,3 @@
-import Config from 'react-native-config';
-
+import {URL_DEV} from '@env';
 export const NAME = 'DEBUG';
-export const BASE_URL = Config.URL_DEV;
+export const BASE_URL = URL_DEV;

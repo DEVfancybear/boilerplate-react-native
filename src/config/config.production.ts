@@ -1,4 +1,4 @@
-import Config from 'react-native-config';
+import {URL_PRODUCTION} from '@env';
 
 export const NAME = 'PRODUCTION';
-export const BASE_URL = Config.URL_PRODUCTION;
+export const BASE_URL = URL_PRODUCTION;

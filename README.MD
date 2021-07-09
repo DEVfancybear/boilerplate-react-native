@@ -12,7 +12,7 @@
 - Lodash
 - React hook form
 - React native vector image
-- React native config
+- React native dotenv
 ### 🐶 Project Structure
 
 ````
