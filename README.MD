@@ -13,6 +13,7 @@
 - React hook form
 - React native vector image
 - React native dotenv
+- React query
 ### 🐶 Project Structure
 
 ````
