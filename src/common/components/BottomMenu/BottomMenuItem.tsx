@@ -2,9 +2,10 @@ import React from 'react';
 import {View} from 'react-native';
 import {AntDesign} from '@expo/vector-icons';
 import {ColorDefault} from '../../themes/colors';
+import {IIconAntTypes} from '../../models';
 
 type Props = {
-  iconName: any;
+  iconName: IIconAntTypes;
   isCurrent?: boolean;
 };
 

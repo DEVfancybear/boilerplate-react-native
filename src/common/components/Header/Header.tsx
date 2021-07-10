@@ -4,16 +4,16 @@ import {NavigationService} from '../../../services/navigation-service/navigation
 import {ColorDefault} from '../../themes/colors';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Ionicons} from '@expo/vector-icons';
-import {IIconTypes} from '../../models';
+import {IIconIonTypes} from '../../models';
 
 type HeaderProps = {
-  leftIcon?: IIconTypes;
+  leftIcon?: IIconIonTypes;
   onPressLeft?: () => void;
-  rightIcon?: IIconTypes;
+  rightIcon?: IIconIonTypes;
   onPressRight?: () => void;
   title?: string;
   backEnabled?: boolean;
-  subRightIcon?: IIconTypes;
+  subRightIcon?: IIconIonTypes;
   onPressSubRight?: () => void;
   children?: React.ReactNode;
 };

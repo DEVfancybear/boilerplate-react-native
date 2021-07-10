@@ -1,3 +1,4 @@
-import {Ionicons} from '@expo/vector-icons';
+import {AntDesign, Ionicons} from '@expo/vector-icons';
 
-export type IIconTypes = keyof typeof Ionicons.glyphMap;
+export type IIconIonTypes = keyof typeof Ionicons.glyphMap;
+export type IIconAntTypes = keyof typeof AntDesign.glyphMap;
