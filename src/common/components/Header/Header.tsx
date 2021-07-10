@@ -3,8 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import {NavigationService} from '../../../services/navigation-service/navigationService';
 import {ColorDefault} from '../../themes/colors';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {IIconTypes} from './Header.props';
 import {Ionicons} from '@expo/vector-icons';
+import {IIconTypes} from '../../models';
 
 type HeaderProps = {
   leftIcon?: IIconTypes;
