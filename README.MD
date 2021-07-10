@@ -19,17 +19,17 @@
 
 src/                 #project root
 |   ├── common/      #common app
-|   |          |── apis/        #apis of feature
-|   |          |── assets/      #assets file
-|   |          |── components/  #common components reuse
+|   |          ├── apis/        #apis of feature
+|   |          ├── assets/      #assets file
+|   |          ├── components/  #common components reuse
 |   |          ├── helpers/     #share an function logic for our app
-|   |          |── i18n/        #multi languages
+|   |          ├── i18n/        #multi languages
 |   |          ├── models/      #define interface
 |   |          ├── recoil/      #state management source
-|   |          |── themes/      #themes app
+|   |          ├── themes/      #themes app
 │   ├── configs/     #configs project
 │   ├── views/       #screens source
-|   |── routes/      #common routes
+|   ├── routes/      #common routes
 │   ├── services/    #services source
 │   ├── Endpoint.ts
 
