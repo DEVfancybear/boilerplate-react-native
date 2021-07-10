@@ -18,18 +18,19 @@
 ````
 
 src/                 #project root
-|   |── apis/        #apis of feature
-|   |── assets/      #assets file
-|   |── components/  #common components reuse
+|   ├── common/      #common app
+|   |          |── apis/        #apis of feature
+|   |          |── assets/      #assets file
+|   |          |── components/  #common components reuse
+|   |          ├── helpers/     #share an function logic for our app
+|   |          |── i18n/        #multi languages
+|   |          ├── models/      #define interface
+|   |          ├── recoil/      #state management source
+|   |          |── themes/      #themes app
 │   ├── configs/     #configs project
-│   ├── helpers/     #share an function logic for our app
 │   ├── views/       #screens source
-|   |── i18n/        #multi languages
-│   ├── models/      #define interface
 |   |── routes/      #common routes
 │   ├── services/    #services source
-│   ├── recoil/      #state management source
-|   |── themes/      #themes app
 │   ├── Endpoint.ts
 
 └── package.json```
@@ -54,5 +55,6 @@ src/                 #project root
 #### 📢 Start IOS
 
 ```bash
+> cd ios > npx pod install
 > npx react-native run-ios
 ```
