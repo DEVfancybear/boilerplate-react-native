@@ -8,6 +8,7 @@ import {AppContainer} from './routes/AppNavigation';
 import ErrorBoundary from 'react-native-error-boundary';
 import {QueryClientProvider} from 'react-query';
 import queryClient from './common/helpers/queryClient';
+import 'react-native-gesture-handler';
 
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
