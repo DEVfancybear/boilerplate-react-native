@@ -13,6 +13,10 @@ class HomeApi {
     };
     return unAuthorizedRequest.post('data', body).then(res => res.data);
   };
+
+  getDetail = (id: number) : any => {
+    return unAuthorizedRequest.post(`data/${id}`).then(res => res.data);
+  }
 }
 
 export default new HomeApi();

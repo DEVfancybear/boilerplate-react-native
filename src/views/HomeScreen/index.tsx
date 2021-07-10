@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -9,55 +9,21 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {optimizeHeavyScreen} from 'react-navigation-heavy-screen';
-import {useMutation, useQuery, useQueryClient} from 'react-query';
-import {HomeApi} from '../../common/apis';
 import {ColorDefault} from '../../common/themes/colors';
 import {MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
 import {scale, verticalScale} from '../../common/helpers';
 import {FontSizeDefault} from '../../common/themes/fontSize';
+import {useHomeFetchQuery, useAddQuery} from '../../common/queryHooks';
 const HomeScreen = () => {
   const [text, setText] = useState('');
-  const queryClient = useQueryClient();
-  const fetchDataList = () => HomeApi.fetchData(1, 30);
-  const {isLoading, isError, data, error} = useQuery(
-    'homeLists',
-    fetchDataList,
-  );
-  const addTodoMutation = useMutation(newTodo => HomeApi.createData(newTodo), {
-    // When mutate is called:
-    onMutate: async (newTodo: string) => {
+  const fetchQuery = useHomeFetchQuery();
+
+  const addTodoMutation = useAddQuery();
+  useEffect(() => {
+    if (addTodoMutation.isSuccess) {
       setText('');
-      // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
-      await queryClient.cancelQueries('homeLists');
-
-      // Snapshot the previous value
-      const previousTodos = queryClient.getQueryData<any>('homeLists');
-
-      // Optimistically update to the new value
-      if (previousTodos) {
-        queryClient.setQueryData<any>('homeLists', {
-          ...previousTodos,
-          data: [
-            ...previousTodos.data,
-            {id: Math.random().toString(), text: newTodo},
-          ],
-        });
-      }
-
-      return {previousTodos};
-    },
-    // If the mutation fails, use the context returned from onMutate to roll back
-    onError: (err, variables, context) => {
-      if (context?.previousTodos) {
-        queryClient.setQueryData<any>('homeLists', context.previousTodos);
-      }
-    },
-    // Always refetch after error or success:
-    onSettled: () => {
-      queryClient.invalidateQueries('homeLists');
-    },
-  });
-
+    }
+  }, [addTodoMutation]);
   const ListItem = ({todo}: any) => {
     return (
       <View style={styles.listItem}>
@@ -91,9 +57,9 @@ const HomeScreen = () => {
       </View>
     );
   };
-  if (isLoading) return <Text>'Loading...'</Text>;
+  if (fetchQuery.isLoading) return <Text>'Loading...'</Text>;
 
-  if (error)
+  if (fetchQuery.error)
     return (
       <SafeAreaView
         style={{
@@ -127,7 +93,7 @@ const HomeScreen = () => {
       </View>
       <View>
         <FlatList
-          data={data.data}
+          data={fetchQuery.data.data}
           renderItem={({item}) => <ListItem todo={item} />}
           keyExtractor={(item, index) => String(item.id)}
         />
