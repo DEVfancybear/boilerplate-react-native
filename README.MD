@@ -28,6 +28,7 @@ src/                 #project root
 |   |          ├── models/      #define interface
 |   |          ├── recoil/      #state management source
 |   |          ├── themes/      #themes app
+|              ├── queryHooks/  #custom hooks logic react query
 │   ├── configs/     #configs project
 │   ├── views/       #screens source
 |   ├── routes/      #common routes
