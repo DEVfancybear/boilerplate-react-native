@@ -40,6 +40,7 @@
     "react-native-unimodules": "^0.14.3",
     "react-native-vector-image": "^0.3.2",
     "react-navigation-heavy-screen": "^1.2.1",
+    "react-query": "^3.18.1",
     "recoil": "^0.3.1"
   },
   "devDependencies": {

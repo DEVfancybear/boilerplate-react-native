@@ -6,6 +6,8 @@ import './common/i18n';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AppContainer} from './routes/AppNavigation';
 import ErrorBoundary from 'react-native-error-boundary';
+import {QueryClientProvider} from 'react-query';
+import queryClient from './common/helpers/queryClient';
 
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
@@ -31,13 +33,15 @@ if (Platform.OS === 'ios') {
 const Endpoint = () => {
   return (
     <RecoilRoot>
-      <SafeAreaProvider>
-        <Suspense fallback={null}>
-          <ErrorBoundary>
-            <AppContainer />
-          </ErrorBoundary>
-        </Suspense>
-      </SafeAreaProvider>
+      <QueryClientProvider client={queryClient}>
+        <SafeAreaProvider>
+          <Suspense fallback={null}>
+            <ErrorBoundary>
+              <AppContainer />
+            </ErrorBoundary>
+          </Suspense>
+        </SafeAreaProvider>
+      </QueryClientProvider>
     </RecoilRoot>
   );
 };
