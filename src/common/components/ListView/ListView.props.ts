@@ -1,34 +1,41 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import {FlatListProps} from 'react-native';
+import {ListRenderItem} from 'react-native';
 
-export interface IListViewProps extends FlatListProps<any> {
-  /**
-   * Function when refreshing
-   * @default undefined
-   */
-  onRefreshing?: () => void;
+export interface IRefreshListViewProps {
+  refreshState: number;
+  onHeaderRefresh?: (state: number) => void;
+  onFooterRefresh?: (state: number) => void;
+  data: any[];
 
-  /**
-   * Function when scroll to end
-   * @default undefined
-   */
-  onLoadMore?: () => void;
+  listRef?: any;
 
-  /**
-   * Enable to load more when scroll to end
-   * @default false
-   */
-  canLoadMore?: boolean;
+  footerRefreshingText?: string;
+  footerFailureText?: string;
+  footerNoMoreDataText?: string;
+  footerEmptyDataText?: string;
 
-  /**
-   * State of Refresh Control
-   * @default false
-   */
-  refreshing?: boolean;
+  footerRefreshingComponent?: any;
+  footerFailureComponent?: any;
+  footerNoMoreDataComponent?: any;
+  footerEmptyDataComponent?: any;
 
-  /**
-   * Enable to render Refresh Control
-   * @default true
-   */
-  canRefresh?: boolean;
+  renderItem: ListRenderItem<any> | null | undefined;
 }
+
+export type IListViewProps = {
+  /* Is there more */
+  hasMore: boolean;
+  /* List data */
+  dataSource: any[];
+  /* Pull-down refresh function */
+  refresh: () => void;
+  /* Pull up and load product data function */
+  loadMore: () => void;
+  /* Head assembly */
+  ListHeaderComponent?: React.ReactNode;
+  /* Empty data display */
+  emptyDataComponent?: React.ReactNode;
+  /* Render ui */
+  renderRow: ListRenderItem<any> | any;
+  /* Remaining parameters */
+  [key: string]: any;
+};

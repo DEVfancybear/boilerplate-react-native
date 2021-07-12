@@ -60,4 +60,13 @@ const useDeleteQuery = () =>
     },
     ...defaultMutationOptions,
   });
-export {useHomeFetchQuery, useAddQuery, useDeleteQuery};
+
+const useGetDetailQuery = (todoId: number) =>
+  useQuery(['home', todoId], () => HomeApi.getDetail(todoId), {
+    initialData: () =>
+      queryClient
+        .getQueryData<any[]>('home')
+        ?.find((d: any) => d.id === todoId),
+  });
+
+export {useHomeFetchQuery, useAddQuery, useDeleteQuery, useGetDetailQuery};

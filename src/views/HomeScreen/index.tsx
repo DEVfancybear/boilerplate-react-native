@@ -17,14 +17,15 @@ import {
   useHomeFetchQuery,
   useAddQuery,
   useDeleteQuery,
+  useGetDetailQuery,
 } from '../../common/queryHooks';
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const fetchQuery = useHomeFetchQuery();
-
+  const [idItem, setIdItem] = useState('');
   const addTodoMutation = useAddQuery();
   const useDeleteMutation = useDeleteQuery();
-
+  const useGetDetailMutation = useGetDetailQuery(Number(idItem));
   const ListItem = ({todo}: any) => {
     return (
       <View style={styles.listItem}>
@@ -40,9 +41,7 @@ const HomeScreen = () => {
           </Text>
         </View>
         {/* {!todo?.completed && ( */}
-        <TouchableOpacity
-        //  onPress={() => markTodoComplete(todo.id)}
-        >
+        <TouchableOpacity onPress={() => setIdItem(todo.id)}>
           <View style={[styles.actionIcon, {backgroundColor: 'green'}]}>
             <MaterialIcons name="done" size={20} color="white" />
           </View>
@@ -67,7 +66,6 @@ const HomeScreen = () => {
         <Text style={styles.txtCommon}>An error has occurred</Text>
       </SafeAreaView>
     );
-
   return (
     <SafeAreaView
       style={{
@@ -101,14 +99,15 @@ const HomeScreen = () => {
       <View style={styles.footer}>
         <View style={styles.inputContainer}>
           <TextInput
-            value={text}
             placeholder="Add Todo"
             onChangeText={text => setText(text)}
+            value={text}
           />
         </View>
         <TouchableOpacity
           onPress={() => {
-            addTodoMutation.mutate(text); setText('');
+            addTodoMutation.mutate(text);
+            setText('');
           }}>
           <View style={styles.iconContainer}>
             <MaterialIcons name="add" size={30} color="white" />
