@@ -13,17 +13,18 @@ import {ColorDefault} from '../../common/themes/colors';
 import {MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
 import {scale, verticalScale} from '../../common/helpers';
 import {FontSizeDefault} from '../../common/themes/fontSize';
-import {useHomeFetchQuery, useAddQuery} from '../../common/queryHooks';
+import {
+  useHomeFetchQuery,
+  useAddQuery,
+  useDeleteQuery,
+} from '../../common/queryHooks';
 const HomeScreen = () => {
   const [text, setText] = useState('');
   const fetchQuery = useHomeFetchQuery();
 
   const addTodoMutation = useAddQuery();
-  useEffect(() => {
-    if (addTodoMutation.isSuccess) {
-      setText('');
-    }
-  }, [addTodoMutation]);
+  const useDeleteMutation = useDeleteQuery();
+
   const ListItem = ({todo}: any) => {
     return (
       <View style={styles.listItem}>
@@ -47,9 +48,7 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
         {/* )} */}
-        <TouchableOpacity
-        //  onPress={() => deleteTodo(todo.id)}
-        >
+        <TouchableOpacity onPress={() => useDeleteMutation.mutate(todo.id)}>
           <View style={styles.actionIcon}>
             <MaterialCommunityIcons name="delete" size={25} color="red" />
           </View>
@@ -93,9 +92,9 @@ const HomeScreen = () => {
       </View>
       <View>
         <FlatList
-          data={fetchQuery.data.data}
+          data={fetchQuery.data}
           renderItem={({item}) => <ListItem todo={item} />}
-          keyExtractor={(item, index) => String(item.id)}
+          keyExtractor={(item, index) => String(index)}
         />
       </View>
 
@@ -107,7 +106,10 @@ const HomeScreen = () => {
             onChangeText={text => setText(text)}
           />
         </View>
-        <TouchableOpacity onPress={() => addTodoMutation.mutate(text)}>
+        <TouchableOpacity
+          onPress={() => {
+            addTodoMutation.mutate(text); setText('');
+          }}>
           <View style={styles.iconContainer}>
             <MaterialIcons name="add" size={30} color="white" />
           </View>

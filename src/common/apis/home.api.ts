@@ -1,11 +1,10 @@
-import {AxiosResponse} from 'axios';
 import unAuthorizedRequest from '../../services/api-service/unAuthorizedRequest';
 
 class HomeApi {
   fetchData = (page: number, size: number): Promise<any> => {
     return unAuthorizedRequest
       .get(`data?_page=${page}&_limit=${size}`)
-      .then(res => res);
+      .then(res => res.data);
   };
   createData = (text: string): any => {
     const body = {
@@ -14,9 +13,12 @@ class HomeApi {
     return unAuthorizedRequest.post('data', body).then(res => res.data);
   };
 
-  getDetail = (id: number) : any => {
+  getDetail = (id: number): any => {
     return unAuthorizedRequest.post(`data/${id}`).then(res => res.data);
-  }
+  };
+  deleteItem = (id: number): any => {
+    return unAuthorizedRequest.delete(`data/${id}`).then(res => res.data);
+  };
 }
 
 export default new HomeApi();
