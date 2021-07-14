@@ -69,4 +69,33 @@ const useGetDetailQuery = (todoId: number) =>
         ?.find((d: any) => d.id === todoId),
   });
 
-export {useHomeFetchQuery, useAddQuery, useDeleteQuery, useGetDetailQuery};
+const useUpdateListItem = () =>
+  useMutation((updates: any) => HomeApi.updateItem(updates), {
+    // When mutate is called:
+    onMutate: async (updates: any) => {
+      await queryClient.cancelQueries('home');
+      // Snapshot the previous value
+      const previousTodos = queryClient.getQueryData<any>('home');
+
+      // Optimistically update to the new value
+
+      if (previousTodos) {
+        queryClient.setQueryData<any[]>('home', (old: any) =>
+          old.map((item: any) => {
+            return item.id === updates.id ? {...item, ...updates} : item;
+          }),
+        );
+      }
+
+      return () => queryClient.setQueryData('home', previousTodos);
+    },
+    ...defaultMutationOptions,
+  });
+
+export {
+  useHomeFetchQuery,
+  useAddQuery,
+  useDeleteQuery,
+  useGetDetailQuery,
+  useUpdateListItem,
+};

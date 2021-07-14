@@ -18,14 +18,21 @@ import {
   useAddQuery,
   useDeleteQuery,
   useGetDetailQuery,
+  useUpdateListItem,
 } from '../../common/queryHooks';
 const HomeScreen = () => {
-  const [text, setText] = useState('');
   const fetchQuery = useHomeFetchQuery();
-  const [idItem, setIdItem] = useState('');
-  const addTodoMutation = useAddQuery();
+  const [idItem, setIdItem] = useState<number | null>(null);
+  const useTodoMutation = useAddQuery();
   const useDeleteMutation = useDeleteQuery();
   const useGetDetailMutation = useGetDetailQuery(Number(idItem));
+  const useUpdateItemMutation = useUpdateListItem();
+  const [text, setText] = useState('');
+  useEffect(() => {
+    if (useGetDetailMutation.data) {
+      setText(useGetDetailMutation.data.full_name);
+    }
+  }, [useGetDetailMutation.data]);
   const ListItem = ({todo}: any) => {
     return (
       <View style={styles.listItem}>
@@ -41,7 +48,10 @@ const HomeScreen = () => {
           </Text>
         </View>
         {/* {!todo?.completed && ( */}
-        <TouchableOpacity onPress={() => setIdItem(todo.id)}>
+        <TouchableOpacity
+          onPress={() => {
+            setIdItem(todo.id);
+          }}>
           <View style={[styles.actionIcon, {backgroundColor: 'green'}]}>
             <MaterialIcons name="done" size={20} color="white" />
           </View>
@@ -55,6 +65,7 @@ const HomeScreen = () => {
       </View>
     );
   };
+
   if (fetchQuery.isLoading) return <Text>'Loading...'</Text>;
 
   if (fetchQuery.error)
@@ -99,18 +110,28 @@ const HomeScreen = () => {
       <View style={styles.footer}>
         <View style={styles.inputContainer}>
           <TextInput
-            placeholder="Add Todo"
+            placeholder={idItem ? 'Edit Todo' : 'Add todo'}
             onChangeText={text => setText(text)}
             value={text}
           />
         </View>
         <TouchableOpacity
           onPress={() => {
-            addTodoMutation.mutate(text);
+            idItem
+              ? useUpdateItemMutation.mutate({
+                  id: idItem,
+                  full_name: text,
+                })
+              : useTodoMutation.mutate(text);
             setText('');
+            idItem ? setIdItem(null) : undefined;
           }}>
           <View style={styles.iconContainer}>
-            <MaterialIcons name="add" size={30} color="white" />
+            <MaterialIcons
+              name={idItem ? 'edit' : 'add'}
+              size={30}
+              color="white"
+            />
           </View>
         </TouchableOpacity>
       </View>
