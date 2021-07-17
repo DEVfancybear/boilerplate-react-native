@@ -1,6 +1,7 @@
 import {useMutation, useQuery} from 'react-query';
 import {HomeApi} from '../../apis';
 import queryClient from '../../helpers/queryClient';
+import {IItemHome} from '../../models';
 
 const useHomeFetchQuery = () =>
   useQuery('home', () => HomeApi.fetchData(1, 30));
@@ -12,14 +13,14 @@ const useAddQuery = () =>
       await queryClient.cancelQueries('home');
 
       // Snapshot the previous value
-      const previousTodos = queryClient.getQueryData<any>('home');
+      const previousTodos = queryClient.getQueryData<IItemHome[]>('home');
 
       // Optimistically update to the new value
       if (previousTodos) {
-        queryClient.setQueryData<any[]>('home', (old: any) => [
-          ...old,
-          newTodo,
-        ]);
+        queryClient.setQueryData<IItemHome[]>(
+          'home',
+          (old: any): IItemHome[] => [...old, newTodo],
+        );
       }
 
       return {previousTodos};
@@ -30,7 +31,7 @@ const useAddQuery = () =>
 const defaultMutationOptions = {
   onError: (err: unknown, variables: any, context: any) => {
     if (context?.previousTodos) {
-      queryClient.setQueryData<any>('home', context.previousTodos);
+      queryClient.setQueryData<IItemHome[]>('home', context.previousTodos);
     }
   },
   // Always refetch after error or success:
@@ -47,12 +48,12 @@ const useDeleteQuery = () =>
       await queryClient.cancelQueries('home');
 
       // Snapshot the previous value
-      const previousTodos = queryClient.getQueryData<any>('home');
+      const previousTodos = queryClient.getQueryData<IItemHome[]>('home');
 
       // Optimistically update to the new value
       if (previousTodos) {
-        queryClient.setQueryData<any[]>('home', (old: any) =>
-          old.filter((item: any) => item.id !== id),
+        queryClient.setQueryData<IItemHome[]>('home', (old: any): IItemHome[] =>
+          old.filter((item: IItemHome) => item.id !== id),
         );
       }
 
@@ -65,23 +66,23 @@ const useGetDetailQuery = (todoId: number) =>
   useQuery(['home', todoId], () => HomeApi.getDetail(todoId), {
     initialData: () =>
       queryClient
-        .getQueryData<any[]>('home')
-        ?.find((d: any) => d.id === todoId),
+        .getQueryData<IItemHome[]>('home')
+        ?.find((d: IItemHome) => d.id === todoId),
   });
 
 const useUpdateListItem = () =>
-  useMutation((updates: any) => HomeApi.updateItem(updates), {
+  useMutation((updates: IItemHome) => HomeApi.updateItem(updates), {
     // When mutate is called:
-    onMutate: async (updates: any) => {
+    onMutate: async (updates: IItemHome) => {
       await queryClient.cancelQueries('home');
       // Snapshot the previous value
-      const previousTodos = queryClient.getQueryData<any>('home');
+      const previousTodos = queryClient.getQueryData<IItemHome[]>('home');
 
       // Optimistically update to the new value
 
       if (previousTodos) {
-        queryClient.setQueryData<any[]>('home', (old: any) =>
-          old.map((item: any) => {
+        queryClient.setQueryData<IItemHome[]>('home', (old: any): IItemHome[] =>
+          old.map((item: IItemHome) => {
             return item.id === updates.id ? {...item, ...updates} : item;
           }),
         );

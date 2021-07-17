@@ -20,10 +20,11 @@ import {
   useGetDetailQuery,
   useUpdateListItem,
 } from '../../common/queryHooks';
+import {IItemHome} from '../../common/models';
 const HomeScreen = () => {
   const fetchQuery = useHomeFetchQuery();
   const [idItem, setIdItem] = useState<number | null>(null);
-  const useTodoMutation = useAddQuery();
+  const useAddTodoMutation = useAddQuery();
   const useDeleteMutation = useDeleteQuery();
   const useGetDetailMutation = useGetDetailQuery(Number(idItem));
   const useUpdateItemMutation = useUpdateListItem();
@@ -33,9 +34,10 @@ const HomeScreen = () => {
       setText(useGetDetailMutation.data.full_name);
     }
   }, [useGetDetailMutation.data]);
-  const ListItem = ({todo}: any) => {
+
+  const renderItem = ({item, index}: {item: IItemHome; index: number}) => {
     return (
-      <View style={styles.listItem}>
+      <View key={index} style={styles.listItem}>
         <View style={{flex: 1}}>
           <Text
             style={{
@@ -44,20 +46,20 @@ const HomeScreen = () => {
               color: ColorDefault.primary,
               // textDecorationLine: todo?.completed ? 'line-through' : 'none',
             }}>
-            {todo?.full_name}
+            {item.full_name}
           </Text>
         </View>
         {/* {!todo?.completed && ( */}
         <TouchableOpacity
           onPress={() => {
-            setIdItem(todo.id);
+            setIdItem(item.id);
           }}>
           <View style={[styles.actionIcon, {backgroundColor: 'green'}]}>
             <MaterialIcons name="done" size={20} color="white" />
           </View>
         </TouchableOpacity>
         {/* )} */}
-        <TouchableOpacity onPress={() => useDeleteMutation.mutate(todo.id)}>
+        <TouchableOpacity onPress={() => useDeleteMutation.mutate(item.id)}>
           <View style={styles.actionIcon}>
             <MaterialCommunityIcons name="delete" size={25} color="red" />
           </View>
@@ -102,7 +104,7 @@ const HomeScreen = () => {
       <View>
         <FlatList
           data={fetchQuery.data}
-          renderItem={({item}) => <ListItem todo={item} />}
+          renderItem={renderItem}
           keyExtractor={(item, index) => String(index)}
         />
       </View>
@@ -122,7 +124,7 @@ const HomeScreen = () => {
                   id: idItem,
                   full_name: text,
                 })
-              : useTodoMutation.mutate(text);
+              : useAddTodoMutation.mutate(text);
             setText('');
             idItem ? setIdItem(null) : undefined;
           }}>
