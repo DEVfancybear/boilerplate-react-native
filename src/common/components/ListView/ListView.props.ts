@@ -1,10 +1,10 @@
 import {ListRenderItem} from 'react-native';
 
-export interface IRefreshListViewProps {
+export interface IRefreshListViewProps<ItemT> {
   refreshState: number;
   onHeaderRefresh?: (state: number) => void;
   onFooterRefresh?: (state: number) => void;
-  data: any[];
+  data: ReadonlyArray<ItemT>;
 
   listRef?: any;
 
@@ -18,14 +18,14 @@ export interface IRefreshListViewProps {
   footerNoMoreDataComponent?: any;
   footerEmptyDataComponent?: any;
 
-  renderItem: ListRenderItem<any> | null | undefined;
+  renderItem: ListRenderItem<ItemT> | null | undefined;
 }
 
-export type IListViewProps = {
+export type IListViewProps<ItemT> = {
   /* Is there more */
   hasMore: boolean;
   /* List data */
-  dataSource: any[];
+  dataSource: ReadonlyArray<ItemT>;
   /* Pull-down refresh function */
   refresh: () => void;
   /* Pull up and load product data function */
@@ -35,7 +35,7 @@ export type IListViewProps = {
   /* Empty data display */
   emptyDataComponent?: React.ReactNode;
   /* Render ui */
-  renderRow: ListRenderItem<any> | any;
+  renderItem: ListRenderItem<ItemT> | null | undefined;
   /* Remaining parameters */
   [key: string]: any;
 };

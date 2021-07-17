@@ -4,7 +4,7 @@ import {IListViewProps} from './ListView.props';
 import {memo} from 'react';
 import isEqual from 'react-fast-compare';
 
-const ListView = (props: IListViewProps) => {
+const ListView = <ItemT extends {}>(props: IListViewProps<ItemT>) => {
   const {
     dataSource,
     refresh,
@@ -15,7 +15,7 @@ const ListView = (props: IListViewProps) => {
     ...args
   } = props;
   const [refreshState, setRefreshState] = useState<number>(RefreshState.Idle);
-  const [listData, setListData] = useState<any[]>([]);
+  const [listData, setListData] = useState<ItemT[]>([]);
   const [loadType, setLoadType] = useState<string>();
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const ListView = (props: IListViewProps) => {
     <RefreshListView
       {...args}
       data={listData}
-      renderItem={({item, index}) => renderRow(item, index)}
+      renderItem={renderRow}
       refreshState={refreshState}
       onHeaderRefresh={onHeaderRefresh}
       onFooterRefresh={onFooterRefresh}

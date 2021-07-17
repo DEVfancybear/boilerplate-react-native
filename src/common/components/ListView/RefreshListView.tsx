@@ -19,7 +19,7 @@ export enum RefreshState {
 }
 let callOnScrollEnd: boolean;
 
-const RefreshListView = (props: IRefreshListViewProps) => {
+const RefreshListView = <ItemT extends {}>(props: IRefreshListViewProps<ItemT>) => {
   function onHeaderRefresh() {
     if (shouldStartHeaderRefreshing()) {
       props.onHeaderRefresh &&
