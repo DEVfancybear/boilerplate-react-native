@@ -4,11 +4,11 @@ import {
   BottomTabBarProps,
 } from '@react-navigation/bottom-tabs';
 import {TabBar} from '../common/components';
-import GroupScreen from '../views/GroupScreen';
-import ProfileScreen from '../views/ProfileScreen';
+import GroupScreen from '../screens/GroupScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import {View} from 'react-native';
-import HomeScreen from '../views/HomeScreen';
-import SettingScreen from '../views/SettingScreen';
+import HomeScreen from '../screens/HomeScreen';
+import SettingScreen from '../screens/SettingScreen';
 
 export const BottomMenu = () => {
   const Tab = createBottomTabNavigator();

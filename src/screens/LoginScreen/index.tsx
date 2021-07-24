@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from '../../common/components/';
+import {Text} from '../../common/components';
 
 const LoginScreen = () => {
   return <Text>Login screen</Text>;

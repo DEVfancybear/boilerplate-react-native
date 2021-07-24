@@ -2,8 +2,8 @@ import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import {APP_SCREEN} from '../screenTypes';
-import LoginScreen from '../../views/LoginScreen';
-import RegisterScreen from '../../views/RegisterScreen';
+import LoginScreen from '../../screens/LoginScreen';
+import RegisterScreen from '../../screens/RegisterScreen';
 import {BottomMenu} from '../BottomMenu';
 
 const Stack = createStackNavigator();

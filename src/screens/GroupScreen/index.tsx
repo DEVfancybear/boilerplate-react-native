@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {images} from '../../common/assets';
-import {Img} from '../../common/components/';
+import {Img} from '../../common/components';
 
 const GroupScreen = () => {
   return (

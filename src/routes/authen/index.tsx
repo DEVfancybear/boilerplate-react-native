@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeScreen from '../../views/HomeScreen/';
+import HomeScreen from '../../screens/HomeScreen';
 import {APP_SCREEN} from '../screenTypes';
 import {createStackNavigator} from '@react-navigation/stack';
 
