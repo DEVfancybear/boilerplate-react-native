@@ -358,7 +358,7 @@ PODS:
     - React-RCTText
   - RNCMaskedView (0.2.6):
     - React-Core
-  - RNFastImage (8.3.6):
+  - RNFastImage (8.3.7):
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
@@ -643,7 +643,7 @@ SPEC CHECKSUMS:
   ReactCommon: bedc99ed4dae329c4fcf128d0c31b9115e5365ca
   ReactNativeKeyboardManager: 93ac3934a51f548c54ac02d61c90e33220bba086
   RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
-  RNFastImage: 044259b52d726b183fa401f3521b2e5a864afc0a
+  RNFastImage: a7384db75df352500261e8e8f1ac2026def26102
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: 9c13c86454bfd54dab7505c1a054470bfecd2563
   RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
