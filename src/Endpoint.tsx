@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import {Platform} from 'react-native';
+import {Platform, UIManager} from 'react-native';
 import KeyboardManager from 'react-native-keyboard-manager';
 import {RecoilRoot} from 'recoil';
 import './common/i18n';
@@ -9,7 +9,11 @@ import ErrorBoundary from 'react-native-error-boundary';
 import {QueryClientProvider} from 'react-query';
 import queryClient from './common/helpers/queryClient';
 import 'react-native-gesture-handler';
-
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 if (Platform.OS === 'ios') {
   KeyboardManager.setEnable(true);
   KeyboardManager.setEnableDebugging(false);
